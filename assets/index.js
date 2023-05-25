@@ -14,7 +14,7 @@ inquirer
 
     {
       type: 'input',
-      name: 'color',
+      name: 'backgroundColor',
       message: 'Enter the color you wish the SVG to be',
     },
     {
@@ -24,25 +24,15 @@ inquirer
     },
     {
         type: 'input',
-        name: 'text_color',
+        name: 'textColor',
         message: 'Enter the color you wish the SVG text to be',
       }
 
   ])
-//   .then((answers) => {
-//     const { filename, width, height, shape, color, x, y, radius, text, fontSize, textColor } = answers;
+  .then((answers) => {
+    const readMe = renderSVG(answers);
 
-//     const logo = new LogoMaker(width, height, filename);
-
-//     if (shape === 'Circle') {
-//       logo.drawCircle(width / 2, height / 2, radius, color);
-//     } else if (shape === 'Rectangle') {
-//       logo.drawRectangle(x, y, width, height, color);
-//     }
-
-//     if (text) {
-//       logo.drawText(text, x, y, fontSize, textColor);
-//     }
-
-//     logo.save();
-//   });
+    fs.writeFile('README.md', readMe, (err) =>
+      err ? console.log(err) : console.log('Successfully created README')
+    );
+  });
