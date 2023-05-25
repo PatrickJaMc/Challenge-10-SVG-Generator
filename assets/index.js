@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const renderSVG = require('../assets/renderSvg');
 
 inquirer
   .prompt([
@@ -30,9 +31,9 @@ inquirer
 
   ])
   .then((answers) => {
-    const readMe = renderSVG(answers);
+    const svg = renderSVG(answers);
 
-    fs.writeFile('README.md', readMe, (err) =>
-      err ? console.log(err) : console.log('Successfully created README')
+    fs.writeFile('LOGO.svg', svg, (err) =>
+      err ? console.log(err) : console.log('Successfully created SVG LOGO')
     );
   });
