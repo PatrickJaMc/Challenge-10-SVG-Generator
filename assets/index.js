@@ -24,7 +24,7 @@ inquirer
     },
     {
         type: 'input',
-        name: 'color',
+        name: 'text_color',
         message: 'Enter the color you wish the SVG text to be',
       }
 
